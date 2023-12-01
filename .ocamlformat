@@ -1,0 +1,4 @@
+profile = janestreet
+margin = 80
+wrap-comments = true
+line-endings = lf
