@@ -38,27 +38,26 @@ let process_line line regex =
      ^ Hashtbl.find value_hash (find_regex_backward line regex))
 ;;
 
-let part1 =
-  let lines = File.read_lines "input/1.txt" in
-  let search_regex = regexp "[1-9]" in
-  List.fold_left
-    ( + )
-    0
-    (List.map (fun line -> process_line line search_regex) lines)
+let run_with_regex regex =
+  File.read_lines "input/1.txt"
+  |> List.map (fun line -> process_line line regex)
+  |> List.fold_left ( + ) 0
 ;;
 
-let%test _ = part1 = 54634
+let part1 = "[1-9]" |> regexp |> run_with_regex
 
 let part2 =
-  let lines = File.read_lines "input/1.txt" in
-  let search_regex =
-    regexp
-      "one\\|two\\|three\\|four\\|five\\|six\\|seven\\|eight\\|nine\\|[1-9]"
-  in
-  List.fold_left
-    ( + )
-    0
-    (List.map (fun line -> process_line line search_regex) lines)
+  "one\\|two\\|three\\|four\\|five\\|six\\|seven\\|eight\\|nine\\|[1-9]"
+  |> regexp
+  |> run_with_regex
 ;;
 
-let%test _ = part2 = 53855
+let%test _ =
+  Printf.printf "Day1, Part 1: %i \n" part1;
+  part1 = 54634
+;;
+
+let%test _ =
+  Printf.printf "Day1, Part 2: %i \n" part2;
+  part2 = 53855
+;;

@@ -153,9 +153,7 @@ let traverse_nums chars_matrix coord_map =
 
 let part1 =
   let chars_matrix =
-    "input/3.txt"
-    |> File.read_lines
-    |> List.map (fun line -> line |> Util.explode)
+    "input/3.txt" |> File.read_lines |> List.map Util.explode
   in
   let symbol_coord_map = create_symbol_coord_map chars_matrix in
   let num_traversal_result = traverse_nums chars_matrix symbol_coord_map in
@@ -168,9 +166,7 @@ let part1 =
 
 let part2 =
   let chars_matrix =
-    "input/3.txt"
-    |> File.read_lines
-    |> List.map (fun line -> line |> Util.explode)
+    "input/3.txt" |> File.read_lines |> List.map Util.explode
   in
   let symbol_coord_map = create_symbol_coord_map chars_matrix in
   let num_traversal_result = traverse_nums chars_matrix symbol_coord_map in
@@ -181,4 +177,14 @@ let part2 =
       else acc)
     num_traversal_result.coord_map
     0
+;;
+
+let%test _ =
+  Printf.printf "Day3, Part 1: %i \n" part1;
+  part1 = 521515
+;;
+
+let%test _ =
+  Printf.printf "Day3, Part 2: %i\n" part2;
+  part2 = 69527306
 ;;
