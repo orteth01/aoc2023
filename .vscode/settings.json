@@ -1,4 +1,5 @@
 {
   "editor.defaultFormatter": "ocamllabs.ocaml-platform",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.guides.indentation": false
 }
