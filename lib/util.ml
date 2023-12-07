@@ -5,3 +5,13 @@ let max_with_string i s = s |> int_of_string |> max i
 let max_with_strings s1 s2 = max (int_of_string s1) (int_of_string s2)
 let split_on_whitespace str = Str.split (Str.regexp "[ ]+") str
 let%test _ = split_on_whitespace "hi   hello" = [ "hi"; "hello" ]
+
+let print_int_list lst () =
+  List.iter (fun x -> Printf.printf "%d, " x) lst;
+  Printf.printf "\n"
+;;
+
+let print_int_tuple_list lst () =
+  List.iter (fun x -> Printf.printf "(%d,%d), " (fst x) (snd x)) lst;
+  Printf.printf "\n"
+;;

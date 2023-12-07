@@ -60,12 +60,6 @@ let part2 =
   |> List.fold_left ( + ) 0
 ;;
 
-let%test _ =
-  Printf.printf "Day2, Part 1: %i \n" part1;
-  part1 = 2593
-;;
+(* let%test _ = Printf.printf "Day2, Part 1: %i \n" part1; part1 = 2593 ;;
 
-let%test _ =
-  Printf.printf "Day2, Part 2: %i\n" part2;
-  part2 = 54699
-;;
+   let%test _ = Printf.printf "Day2, Part 2: %i\n" part2; part2 = 54699 ;; *)

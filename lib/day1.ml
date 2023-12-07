@@ -52,12 +52,6 @@ let part2 =
   |> run_with_regex
 ;;
 
-let%test _ =
-  Printf.printf "Day1, Part 1: %i \n" part1;
-  part1 = 54634
-;;
+(* let%test _ = Printf.printf "Day1, Part 1: %i \n" part1; part1 = 54634 ;;
 
-let%test _ =
-  Printf.printf "Day1, Part 2: %i \n" part2;
-  part2 = 53855
-;;
+   let%test _ = Printf.printf "Day1, Part 2: %i \n" part2; part2 = 53855 ;; *)

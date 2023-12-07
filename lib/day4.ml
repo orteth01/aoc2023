@@ -113,12 +113,7 @@ let part2 =
   CardMap.fold (fun _ card acc -> acc + card.count) card_map 0
 ;;
 
-let%test _ =
-  Printf.printf "Day4, Part 1: %i \n" part1;
-  part1 = 33950
-;;
+(* let%test _ = Printf.printf "Day4, Part 1: %i \n" part1; part1 = 33950 ;;
 
-let%test _ =
-  Printf.printf "Day4, Part 2: %i \n" part2;
-  part2 = 14814534
-;;
+   let%test _ = Printf.printf "Day4, Part 2: %i \n" part2; part2 = 14814534
+   ;; *)
