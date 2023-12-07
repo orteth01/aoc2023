@@ -1,8 +1,4 @@
-module IntSet = Set.Make (struct
-    type t = int
-
-    let compare = compare
-  end)
+open IntSet
 
 module CardMap = Map.Make (struct
     type t = int
