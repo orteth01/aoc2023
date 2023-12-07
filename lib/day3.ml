@@ -178,7 +178,3 @@ let part2 =
     num_traversal_result.coord_map
     0
 ;;
-
-(* let%test _ = Printf.printf "Day3, Part 1: %i \n" part1; part1 = 521515 ;;
-
-   let%test _ = Printf.printf "Day3, Part 2: %i\n" part2; part2 = 69527306 ;; *)

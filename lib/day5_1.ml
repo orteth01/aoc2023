@@ -57,6 +57,3 @@ let part1 =
   in
   List.fold_left min max_int locations
 ;;
-
-(* let%test "5.1" = Printf.printf "Day5, Part 1: %i \n" part1; part1 = 111627841
-   ;; *)

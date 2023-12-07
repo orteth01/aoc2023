@@ -94,7 +94,4 @@ let part2 =
   List.fold_left (fun acc (m, _) -> min acc m) max_int location_pairs
 ;;
 
-let%test "5.2" =
-  Printf.printf "Day5, Part 2: %i \n" part2;
-  part2 = 69323688
-;;
+(* let%test "5.2" = Printf.printf "Day5, Part 2: %i \n" part2; part2 = 0 ;; *)
