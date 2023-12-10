@@ -1,25 +1,27 @@
 open Str
 
-let value_hash = Hashtbl.create 123456;;
-
-Hashtbl.add value_hash "1" "1";;
-Hashtbl.add value_hash "one" "1";;
-Hashtbl.add value_hash "2" "2";;
-Hashtbl.add value_hash "two" "2";;
-Hashtbl.add value_hash "3" "3";;
-Hashtbl.add value_hash "three" "3";;
-Hashtbl.add value_hash "4" "4";;
-Hashtbl.add value_hash "four" "4";;
-Hashtbl.add value_hash "5" "5";;
-Hashtbl.add value_hash "five" "5";;
-Hashtbl.add value_hash "6" "6";;
-Hashtbl.add value_hash "six" "6";;
-Hashtbl.add value_hash "7" "7";;
-Hashtbl.add value_hash "seven" "7";;
-Hashtbl.add value_hash "8" "8";;
-Hashtbl.add value_hash "eight" "8";;
-Hashtbl.add value_hash "9" "9";;
-Hashtbl.add value_hash "nine" "9"
+let str_to_val num_str =
+  match num_str with
+  | "1" -> "1"
+  | "one" -> "1"
+  | "2" -> "2"
+  | "two" -> "2"
+  | "3" -> "3"
+  | "three" -> "3"
+  | "4" -> "4"
+  | "four" -> "4"
+  | "5" -> "5"
+  | "five" -> "5"
+  | "6" -> "6"
+  | "six" -> "6"
+  | "7" -> "7"
+  | "seven" -> "7"
+  | "8" -> "8"
+  | "eight" -> "8"
+  | "9" -> "9"
+  | "nine" -> "9"
+  | _ -> failwith "invalid number string"
+;;
 
 let find_regex_forward line regex =
   ignore (Str.search_forward regex line 0);
@@ -34,20 +36,22 @@ let find_regex_backward line regex =
 
 let process_line line regex =
   int_of_string
-    (Hashtbl.find value_hash (find_regex_forward line regex)
-     ^ Hashtbl.find value_hash (find_regex_backward line regex))
+    (str_to_val (find_regex_forward line regex)
+     ^ str_to_val (find_regex_backward line regex))
 ;;
 
-let run_with_regex regex =
+let part1 =
   File.read_lines "input/1.txt"
-  |> List.map (fun line -> process_line line regex)
+  |> List.map (fun line -> process_line line (regexp "[1-9]"))
   |> List.fold_left ( + ) 0
 ;;
 
-let part1 = "[1-9]" |> regexp |> run_with_regex
-
 let part2 =
-  "one\\|two\\|three\\|four\\|five\\|six\\|seven\\|eight\\|nine\\|[1-9]"
-  |> regexp
-  |> run_with_regex
+  File.read_lines "input/1.txt"
+  |> List.map (fun line ->
+    process_line
+      line
+      (regexp
+         "one\\|two\\|three\\|four\\|five\\|six\\|seven\\|eight\\|nine\\|[1-9]"))
+  |> List.fold_left ( + ) 0
 ;;

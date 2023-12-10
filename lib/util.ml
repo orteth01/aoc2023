@@ -1,6 +1,8 @@
 (* string *)
 let trim_and_split_on_char c s = s |> String.trim |> String.split_on_char c
 let explode s = s |> String.to_seq |> List.of_seq
+let%test "explode" = explode "hello" = [ 'h'; 'e'; 'l'; 'l'; 'o' ]
+let%test "explode empty" = explode "" = []
 let split_on_whitespace str = Str.split (Str.regexp "[ ]+") str
 
 let%test "split_on_whitespace" =
@@ -14,6 +16,7 @@ let is_digit c = Char.code c >= Char.code '0' && Char.code c <= Char.code '9'
 (* comparison *)
 let max_with_string i s = s |> int_of_string |> max i
 let max_with_strings s1 s2 = max (int_of_string s1) (int_of_string s2)
+let compare_desc a b = compare b a
 
 (* debugging *)
 let print_int_list lst () =
