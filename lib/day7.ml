@@ -97,16 +97,16 @@ let hand_value card_counts =
 ;;
 
 let get_card_value_counts jack_value cards =
-  let rec get_card_value_counts_rec cards acc =
+  let rec get_card_value_counts' cards acc =
     match cards with
     | [] -> acc
     | cur :: rest ->
       cur
       |> card_value jack_value
       |> increment_count_for_key acc 1
-      |> get_card_value_counts_rec rest
+      |> get_card_value_counts' rest
   in
-  get_card_value_counts_rec (Util.explode cards) IntMap.empty
+  get_card_value_counts' (Util.explode cards) IntMap.empty
 ;;
 
 let calulate_card_values jack_value line =

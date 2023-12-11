@@ -18,16 +18,16 @@ let get_combined_ints line =
 ;;
 
 let get_num_victories time distance =
-  let rec get_num_victories_rec time distance hold acc =
+  let rec get_num_victories' time distance hold acc =
     match hold with
     | 0 -> acc
     | ms ->
       (match (time - ms) * ms with
        | x when x > distance ->
-         get_num_victories_rec time distance (ms - 1) (acc + 1)
-       | _ -> get_num_victories_rec time distance (ms - 1) acc)
+         get_num_victories' time distance (ms - 1) (acc + 1)
+       | _ -> get_num_victories' time distance (ms - 1) acc)
   in
-  get_num_victories_rec time distance time 0
+  get_num_victories' time distance time 0
 ;;
 
 let process_lines process_line lines =

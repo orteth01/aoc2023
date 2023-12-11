@@ -20,10 +20,10 @@ let%test "split_on_whitespace" =
 
 (* int *)
 let greatest_common_devisor a b =
-  let rec greatest_common_devisor_rec x y =
-    if y = 0 then x else greatest_common_devisor_rec y (x mod y)
+  let rec greatest_common_devisor' x y =
+    if y = 0 then x else greatest_common_devisor' y (x mod y)
   in
-  greatest_common_devisor_rec (abs a) (abs b)
+  greatest_common_devisor' (abs a) (abs b)
 ;;
 
 let%test "greatest_common_devisor" = greatest_common_devisor 24 16 = 8
@@ -39,6 +39,11 @@ let max_with_strings s1 s2 = max (int_of_string s1) (int_of_string s2)
 let compare_desc a b = compare b a
 
 (* debugging *)
+let print_str_list lst () =
+  List.iter (fun x -> Printf.printf "%s, " x) lst;
+  Printf.printf "\n"
+;;
+
 let print_int_list lst () =
   List.iter (fun x -> Printf.printf "%d, " x) lst;
   Printf.printf "\n"
