@@ -5,10 +5,30 @@ let%test "explode" = explode "hello" = [ 'h'; 'e'; 'l'; 'l'; 'o' ]
 let%test "explode empty" = explode "" = []
 let split_on_whitespace str = Str.split (Str.regexp "[ ]+") str
 
+let ends_with_char s c =
+  let len = String.length s in
+  len > 0 && s.[len - 1] = c
+;;
+
+let%test "ends with char = true" = ends_with_char "11A" 'A' = true
+let%test "ends with char = false" = ends_with_char "11A" 'B' = false
+
 let%test "split_on_whitespace" =
   split_on_whitespace "hi   hello cool       beans"
   = [ "hi"; "hello"; "cool"; "beans" ]
 ;;
+
+(* int *)
+let greatest_common_devisor a b =
+  let rec greatest_common_devisor_rec x y =
+    if y = 0 then x else greatest_common_devisor_rec y (x mod y)
+  in
+  greatest_common_devisor_rec (abs a) (abs b)
+;;
+
+let%test "greatest_common_devisor" = greatest_common_devisor 24 16 = 8
+let lowest_common_multiple a b = abs (a * b) / greatest_common_devisor a b
+let%test "lowest_common_multiple" = lowest_common_multiple 7 11 = 77
 
 (* char *)
 let is_digit c = Char.code c >= Char.code '0' && Char.code c <= Char.code '9'

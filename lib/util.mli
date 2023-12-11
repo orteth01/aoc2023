@@ -7,3 +7,5 @@ val compare_desc : 'a -> 'a -> int
 val split_on_whitespace : string -> string list
 val print_int_list : int list -> unit -> unit
 val print_int_tuple_list : (int * int) list -> unit -> unit
+val ends_with_char : string -> char -> bool
+val lowest_common_multiple : int -> int -> int
