@@ -43,7 +43,7 @@ let process_line line regex =
 let part1 =
   File.read_lines "input/1.txt"
   |> List.map (fun line -> process_line line (regexp "[1-9]"))
-  |> List.fold_left ( + ) 0
+  |> Util.sum_int_list
 ;;
 
 let part2 =
@@ -53,5 +53,5 @@ let part2 =
       line
       (regexp
          "one\\|two\\|three\\|four\\|five\\|six\\|seven\\|eight\\|nine\\|[1-9]"))
-  |> List.fold_left ( + ) 0
+  |> Util.sum_int_list
 ;;

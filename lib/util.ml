@@ -38,6 +38,10 @@ let max_with_string i s = s |> int_of_string |> max i
 let max_with_strings s1 s2 = max (int_of_string s1) (int_of_string s2)
 let compare_desc a b = compare b a
 
+(* int list *)
+let sum_int_list list = List.fold_left ( + ) 0 list
+let%test "sum_int_list" = sum_int_list [ 1; 2; 3; 4; 5 ] = 15
+
 (* debugging *)
 let print_str_list lst () =
   List.iter (fun x -> Printf.printf "%s, " x) lst;

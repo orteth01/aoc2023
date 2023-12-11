@@ -41,14 +41,14 @@ let add_map_entry line starters map =
 ;;
 
 let build_map lines =
-  let rec build_map' lines map starters =
+  let rec build_map_rec lines map starters =
     match lines with
     | [] -> map, starters
     | head :: rest ->
       let new_map, new_starters = add_map_entry head starters map in
-      build_map' rest new_map new_starters
+      build_map_rec rest new_map new_starters
   in
-  build_map' lines NodeMap.empty []
+  build_map_rec lines NodeMap.empty []
 ;;
 
 let char_dir char =
@@ -59,18 +59,18 @@ let char_dir char =
 ;;
 
 let follow_directions full_directions is_found map starter =
-  let rec follow_dirs' direcs acc =
+  let rec follow_dirs_rec direcs acc =
     match direcs, acc.current_check with
     | _, c when is_found c -> acc.num_steps
-    | [], _ -> follow_dirs' full_directions acc
+    | [], _ -> follow_dirs_rec full_directions acc
     | head :: rest, _ ->
-      follow_dirs'
+      follow_dirs_rec
         rest
         { current_check = (char_dir head) (NodeMap.find acc.current_check map)
         ; num_steps = acc.num_steps + 1
         }
   in
-  follow_dirs' full_directions { current_check = starter; num_steps = 0 }
+  follow_dirs_rec full_directions { current_check = starter; num_steps = 0 }
 ;;
 
 let part1 =

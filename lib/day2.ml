@@ -49,7 +49,7 @@ let part1 =
        && game_results.blue <= 14
     then game_results.game_number
     else 0)
-  |> List.fold_left ( + ) 0
+  |> Util.sum_int_list
 ;;
 
 let part2 =
@@ -57,5 +57,5 @@ let part2 =
   |> List.map (fun line ->
     let game_results = derive_game_results line in
     game_results.red * game_results.green * game_results.blue)
-  |> List.fold_left ( + ) 0
+  |> Util.sum_int_list
 ;;

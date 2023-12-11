@@ -158,8 +158,7 @@ let part1 =
   let symbol_coord_map = create_symbol_coord_map chars_matrix in
   let num_traversal_result = traverse_nums chars_matrix symbol_coord_map in
   CoordMap.fold
-    (fun _ value acc ->
-      value.neighbor_nums |> List.fold_left ( + ) 0 |> ( + ) acc)
+    (fun _ value acc -> value.neighbor_nums |> Util.sum_int_list |> ( + ) acc)
     num_traversal_result.coord_map
     0
 ;;
